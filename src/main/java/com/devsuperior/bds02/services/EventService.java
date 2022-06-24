@@ -29,20 +29,15 @@ public class EventService {
 		
 		try {
 			Event entity = eventRepository.getOne(id);
-			//entity.setCity(dto.getCityId().);
 			entity.setDate(dto.getDate());
 			entity.setName(dto.getName());
 			entity.setUrl(dto.getUrl());
-			
-			
-			
+						
 			City city = cityRepository.getOne(dto.getCityId());
 			entity.setCity(city);
 			
 			entity = eventRepository.save(entity);
-			
-			
-		
+					
 			return new EventDTO(entity);	
 			
 		}
@@ -52,42 +47,5 @@ public class EventService {
 		
 	}
 		
-		
-		
-	
-	
-//	@Transactional(readOnly = true)
-//	public List<CityDTO>findAll(){	
-//	List<City> list =	cityRepository.findAll(Sort.by("name"));	 	
-//		return list.stream().map(x -> new CityDTO(x)).collect(Collectors.toList()); 
-//	}
-//
-//	@Transactional
-//	public CityDTO insert(CityDTO dto) {
-//		City entity = new City();
-//		entity.setName(dto.getName());
-//		entity = cityRepository.save(entity);
-//	
-//		return new CityDTO(entity);
-//		
-//	}
-//
-//	public void delete(Long id) {
-//		try {
-//			cityRepository.deleteById(id);			
-//		} 
-//		catch(EmptyResultDataAccessException e) {
-//			throw new ResourceNotFoundException("Id not found "+ id);
-//			
-//		}
-//		catch(DataIntegrityViolationException e) {
-//			throw new DataBaseException("Integrity violation");
-//			
-//		}
-//		
-//		
-//	}
-	
-
 
 }
